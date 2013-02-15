@@ -8,3 +8,7 @@ Template.hello.greeting = ->
 Template.hello.events
   'keyup input': (e) ->
     console?.log e.keyCode
+
+if (Meteor.isClient)
+  Template.snippets.codes = ->
+    return Codes.find({}, {sort: {score: -1, name: 1}})

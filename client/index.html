@@ -5,8 +5,26 @@
 <body>
   
   {{> hello}}
+
+  <div id="outer">
+    {{> snippets}}
+  </div>
 </body>
 
 <template name="title">
   {{name}}
+</template>
+
+<template name="snippets">
+  <div class="snippets">
+    {{#each codes}}
+    {{> code}}
+    {{/each}}
+  </div>
+</template>
+
+<template name="code">
+  <div class="code">
+    <span class="message">{{message}}</span>
+  </div>
 </template>
