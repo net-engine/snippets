@@ -1,30 +1,21 @@
 <head>
-  <title>{{> title}}</title>
+  <title>snippets</title>
 </head>
 
 <body>
+  <header class='app-header'>
+    <h1 class='app-title'><a href="/" title='Snippets'>snippets</a></h1>
+    {{loginButtons align="right"}}
+  </header>
   
-  {{> hello}}
 
-  <div id="outer">
+  <div class='container'>
     {{> snippets}}
   </div>
+
+  <footer class='app-footer'>
+    <textarea id='new-code-post'></textarea>
+  </footer>
 </body>
 
-<template name="title">
-  {{name}}
-</template>
 
-<template name="snippets">
-  <div class="snippets">
-    {{#each codes}}
-    {{> code}}
-    {{/each}}
-  </div>
-</template>
-
-<template name="code">
-  <div class="code">
-    <span class="message">{{message}}</span>
-  </div>
-</template>

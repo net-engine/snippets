@@ -1,5 +1,82 @@
-$font-family = 'Geo', 'monospace';
+
+$background-color = hsl(190, 90%, 7%);
+$color = hsl(190, 20%, 75%);
+
+$font-size = 16px;
+$line-height = 1.5;
+$font-family = monospace;
+
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
 
 body {
-  font: normal 16px/1 $font-family;
+  font: normal $font-size/$line-height $font-family;
+  background: $background-color;
+  color: $color;
+  padding: 1em;
 }
+
+h1, h2 {
+  font-family: 'Geo'
+  color: #268bcb;
+}
+
+
+.app-header {
+  height: 3em;
+  line-height: 3em;
+  position: fixed;
+  top: 1em;
+  left: 1em;
+  right: 1em;
+}
+
+.app-title {
+  float: left;
+
+  a {
+    color: #268bcb;
+    text-decoration: none;
+    letter-spacing: -.05em;
+  }
+}
+
+.login-buttons-dropdown-align-right {
+  float: right;
+  position: relative;
+}
+
+.accounts-dialog {
+  position: absolute;
+  top: 2em;
+  left: 0; right: 0;
+}
+
+.container {
+  position: fixed;
+  top: 5em;
+  left: 1em;
+  right: 0;
+  bottom: 6em;
+}
+
+
+.app-footer {
+  position: fixed;
+  bottom: 1em;
+  left: 1em;
+  right: 1em;
+  z-index: 100;
+  height: 4em;
+  
+  textarea {
+    height: 4em;
+    font-size: $font-size;
+    width: 100%;
+  }
+}
+
