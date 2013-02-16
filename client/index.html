@@ -4,18 +4,29 @@
 </head>
 
 <body>
-  <header class='app-header'>
-    <h1 class='app-title'><a href="/" title='Snippets'>snippets</a></h1>
-  </header>
+
+  <div class='wrapper{{#unless currentUser}} public{{/unless}}'>
+
+    <header class='app-header'>
+      <h1 class='app-title'><a href="/" title='Snippets'>snippets</a></h1>
+    </header>
+
+    {{loginButtons align='right'}}
+
+    {{#if currentUser}}
+
+      <div class='container'>
+        {{> snippets}}
+      </div>
+
+      <footer class='app-footer'>
+        {{> newSnippet}}
+      </footer>
+
+    {{/if}}
+
+  </wrapper>
   
-
-  <div class='container'>
-    {{> snippets}}
-  </div>
-
-  <footer class='app-footer'>
-    {{> newSnippet}}
-  </footer>
 </body>
 
 

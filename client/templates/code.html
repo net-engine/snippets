@@ -1,7 +1,16 @@
 <template name="code">
   <div class="code">
-    <pre class="prettyprint">{{message}}</pre>
+    {{#if lang is 'Plain'}}
+      <pre class="prettyprint"><span class="nocode">{{message}}</span></pre>
+    {{/if}}
+
+    {{#unless lang is 'Plain'}}
+      <pre class="prettyprint" lang-{{lang}}>{{message}}</pre>
+    {{/unless}}
+            
     <time class='icon-clock'>{{time}}</time>
+    <label class='lang'>{{lang}}</label>
     <a href="#delete" class="delete" title="Delete this snippet">Delete</a>
+    
   </div>
 </template>

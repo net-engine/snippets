@@ -23,13 +23,18 @@ if (Meteor.isClient)
     'keydown textarea' : (e) ->
       now = new Date()
       textarea = $('#new-code-post')
+      select = $('#new-snippet-language')
 
       if e.keyCode is 13
         e.preventDefault()
         
         Codes.insert
           message: textarea.val()
+          time: time
+          lang: select.val()
+
         textarea.val('')
+        select.val('Guess')
     
     'keyup textarea' : (e) ->
       scrollToBottom()

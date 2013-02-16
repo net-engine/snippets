@@ -6,7 +6,7 @@ $color = hsl(190, 20%, 75%);
 
 $font-size = 16px;
 $line-height = 1.5;
-$font-family = monospace;
+$font-family = 'droid sans mono', menlo, monospace;
 
 
 * {
@@ -24,6 +24,7 @@ a {
 body {
   font: normal $font-size/$line-height $font-family;
   background: $background-color;
+  text-transform: lowercase;
   color: $color;
   padding: 1em;
 }
@@ -32,6 +33,35 @@ h1, h2 {
   font-family: 'Geo', $font-family;
   color: #268bcb;
 }
+
+input {
+  display: block;
+  width: auto;
+  height: 2em;
+  line-height: 2em;
+  font: normal 16px/1 monospace;
+  background: rgba(255,255,255,.25);
+  border: 1px solid rgba(0,0,0,.75);
+  border-radius: 3px;
+  padding: 0 .5em;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+
+.login-button, .additional-link {
+  display: block;
+  text-align: center;
+  background: rgba(255,255,255,.15);
+  border-radius: 2px;
+  margin: .5em 0 0;
+  cursor: pointer;
+
+  &:hover { background: rgba(255,255,255,.25); }
+}
+
+.login-button { background: rgba(255,255,255,.12); }
 
 
 .app-header {
@@ -57,14 +87,22 @@ h1, h2 {
 }
 
 .login-buttons-dropdown-align-right {
-  float: right;
-  position: relative;
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  height: 2em;
+  line-height: 2em;
 }
 
 .accounts-dialog {
   position: absolute;
   top: 2em;
-  left: 0; right: 0;
+  right: 0;
+  z-index: 100;
+  background: black;
+  width: 300px;
+  width: 12em;
+  padding: .75em 1em;
 }
 
 .container {
@@ -99,19 +137,42 @@ h1, h2 {
     border: 1px solid $background-color;
     border-radius: 5px;
     color: white;
-    padding: 0.25em .5em;
+    padding: 0.25em 8.5em 0.25em 0.5em;
     font: normal $font-size/$line-height $font-family;
     box-sizing: border-box;
+    resize: none;
+
+    &:focus {
+      outline: 0;
+      background: lighten($background-color, 2.5%);
+    }
   }
 
-  button {
-    position: absolute;
-    top: -2.5em;
-    right: 0;
-  }
 }
 
-.delete {
+
+
+#new-snippet-language, #new-snippet-submit {
+  position: absolute;
+  right: 0.5em;
+  height: 1.65em;
+  font-size: .85em;
+  border: 0;
+  background: white;
+  width: 9em;
+  font-family: $font-family;
+  padding: 0 .5em;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#new-snippet-language { top: 0.5em; }
+
+#new-snippet-submit { bottom: 0.5em; }
+
+.delete, .login-close-text {
   position: absolute;
   top: -.35em;
   left: -.5em;
@@ -135,12 +196,16 @@ h1, h2 {
 }
 
 
+select {
+  background: rgba(white,.5);
+}
+
 button {
   display: block;
   height: 2em;
   padding: 0 .5em;
   line-height: 2em;
-  background: rgba(255,255,255,.5);
+  background: rgba(white,.5);
   border: 0;
   border-radius: 2px;
   -webkit-appearance: none;
@@ -152,9 +217,10 @@ button {
 pre.prettyprint {
   width: auto;
   margin: 0;
-  background: rgba(0,0,0,.5);
-  border: 1px solid rgba(0,0,0,.75);
-  box-shadow: inset 0 1px 1px rgba(0,0,0,.85);
+  background: rgba(black, .5);
+  border: 1px solid rgba(black, .75);
+  box-shadow: inset 0 1px 1px rgba(black, .85);
+  border-radius: 3px;
 }
 
 
@@ -166,9 +232,21 @@ video {
   height: 300px;
   margin: -150px -250px;
   z-index: 100;
-  background: rgba(0,0,0,.5);
+  background: rgba(black, .5);
 }
 
+.lang {
+  position: absolute;
+  top: .25em;
+  right: .25em;
+  border-radius: 2px;
+  font-size: .75em;
+  color: $background-color;
+  line-height: 1em;
+  padding: 0 .5em;
+  background: rgba(white, .25);
+  text-transform: uppercase;
+}
 
 time {
   position: absolute;
@@ -177,3 +255,44 @@ time {
   font-size: .75em;
   color: hsl(190,60%,15%);
 }
+
+
+
+
+
+.public {
+  .app-header {
+    position: static;
+    height: 6em;
+    line-height: 6em;
+
+    .app-title {
+      float: none;
+
+      a {
+        margin: .5em auto;
+        height: 2em;
+        width: 6.7em;
+        background-size: 8.75em;
+      }
+    }
+  }
+
+  .login-close-text { display: none; }
+
+  #login-buttons {
+    position: static;
+    margin: auto;
+    max-width: 320px;
+    text-align: center;
+    padding: 0 1em;
+  }
+
+  #login-dropdown-list {
+    position: static;
+    background: transparent;
+    width: auto;
+  }
+}
+
+
