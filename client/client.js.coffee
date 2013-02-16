@@ -22,7 +22,6 @@ if (Meteor.isClient)
   Template.newSnippet.events
     'keydown textarea' : (e) ->
       now = new Date()
-      time = now.getHours() + ':' + (now.getMinutes() + 1)
       textarea = $('#new-code-post')
 
       if e.keyCode is 13
@@ -30,7 +29,6 @@ if (Meteor.isClient)
         
         Codes.insert
           message: textarea.val()
-          time: time
         textarea.val('')
     
     'keyup textarea' : (e) ->
