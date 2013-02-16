@@ -5,7 +5,7 @@ if (Meteor.isServer)
     handle  = query.observe(
       added: (code) ->
         now = new Date()
-        time = now.getHours() + ':' + (now.getMinutes() + 1)
+        time = now.getHours() + ':' + pad(now.getMinutes())
         Codes.update(code._id, time: time, message: code.message)
     )
 
@@ -17,3 +17,11 @@ if (Meteor.isServer)
       for message in messages
         Codes.insert
           message: message
+
+
+# Private
+
+pad = (number, length) ->
+  str = "" + number
+  str = "0" + str  while str.length < length
+  str

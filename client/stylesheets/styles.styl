@@ -48,7 +48,10 @@ input {
   box-sizing: border-box;
 }
 
-
+#login-name-link {
+  position: relative;
+  cursor: pointer;
+}
 
 .login-button, .additional-link {
   display: block;
@@ -295,4 +298,36 @@ time {
   }
 }
 
+
+
+
+#login-sign-in-link {
+  background-image: -webkit-linear-gradient(left, rgba(255,255,255,0.1) 0, white .5em, white 1em, rgba(255,255,255,0.1) 1.5em);
+  -webkit-background-clip: text;
+  background-position: 0 center;
+  color: transparent;
+  width: 90px;
+  display: inline-block;
+  white-space: nowrap;
+  cursor: pointer;
+
+  &:hover {
+    animation: none;
+    color: white
+  }
+}
+
+
+
+#login-sign-in-link {
+  animation: glisten 5s linear infinite;
+}
+
+@-webkit-keyframes glisten {
+  0% { background-position: 0 center; }
+  100% { background-position: 180px center; }
+}
+
+// @-moz-keyframes glisten {
+// }
 

@@ -30,7 +30,6 @@ if (Meteor.isClient)
         
         Codes.insert
           message: textarea.val()
-          time: time
           lang: select.val()
 
         textarea.val('')
