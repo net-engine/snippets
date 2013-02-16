@@ -1,7 +1,23 @@
 
+scrollToBottom = ->
+  $('.container').scrollTop( $('.snippets').height() )
+
 if (Meteor.isClient)
+  window.setTimeout (->
+    
+    
+  ), 500
+
+  Template.snippets.rendered = ->
+    prettyPrint()
+    scrollToBottom()
+
+  Template.code.rendered = ->
+    prettyPrint()
+    scrollToBottom()
+
   Template.snippets.codes = ->
-    return Codes.find({}, {sort: {score: -1, name: 1}})
+    Codes.find()
 
   $(document).on('click', '.app-footer button', ->
     Codes.find({}).forEach((element)->
@@ -9,13 +25,20 @@ if (Meteor.isClient)
 
   Template.addCode.events
     'keydown textarea' : (e) ->
+      now = new Date()
+      time = now.getHours() + ':' + (now.getMinutes() + 1)
       textarea = $('#new-code-post')
 
       if e.keyCode is 13
         e.preventDefault()
+        
         Codes.insert
           message: textarea.val()
+          time: time
         textarea.val('')
+    
+    'keyup textarea' : (e) ->
+      scrollToBottom()
 
   Template.code.events
     'click .delete' : (e) ->
