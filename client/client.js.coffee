@@ -3,10 +3,6 @@ scrollToBottom = ->
   $('.container').scrollTop( $('.snippets').height() )
 
 if (Meteor.isClient)
-  window.setTimeout (->
-    
-    
-  ), 500
 
   Template.snippets.rendered = ->
     prettyPrint()
@@ -23,7 +19,7 @@ if (Meteor.isClient)
     Codes.find({}).forEach((element)->
       Codes.remove element._id))
 
-  Template.addCode.events
+  Template.newSnippet.events
     'keydown textarea' : (e) ->
       now = new Date()
       time = now.getHours() + ':' + (now.getMinutes() + 1)

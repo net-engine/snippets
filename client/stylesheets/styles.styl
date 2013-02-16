@@ -29,7 +29,7 @@ body {
 }
 
 h1, h2 {
-  font-family: 'Geo'
+  font-family: 'Geo', $font-family;
   color: #268bcb;
 }
 
@@ -47,9 +47,12 @@ h1, h2 {
   float: left;
 
   a {
-    color: #268bcb;
-    text-decoration: none;
-    letter-spacing: -.05em;
+    width: 3.25em;
+    display: block;
+    height: 1em;
+    text-indent: -9999px;
+    background: url(/logo.svg) no-repeat left center;
+    background-size: 4.25em;
   }
 }
 
