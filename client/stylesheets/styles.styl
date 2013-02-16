@@ -24,7 +24,6 @@ a {
 body {
   font: normal $font-size/$line-height $font-family;
   background: $background-color;
-  text-transform: lowercase;
   color: $color;
   padding: 1em;
 }
@@ -190,11 +189,12 @@ input {
   &:before {
     content: '\D7';
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 50%; left: 50%;
     text-indent: 0;
-    margin: -.45em -.3em;
+    margin: -.5em -.3em;
     text-align: center;
+    font-size: 1em;
+    line-height: 1em;
   }
 }
 
@@ -328,6 +328,67 @@ time {
   100% { background-position: 180px center; }
 }
 
-// @-moz-keyframes glisten {
-// }
+@-moz-keyframes glisten {
+  0% { background-position: 0 center; }
+  100% { background-position: 180px center; }
+}
 
+.user-avatar {
+  float: left;
+  width: 4em;
+  height: 4em;
+  margin-left: 2em;
+  border: 1px solid rgba(0,0,0,.25);
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  position: relative;
+  font-size: 0.45em;
+  text-align: center;
+  line-height: 1.5em;
+  padding: 0.15em;
+  text-decoration: none;
+  color: transparent;
+  cursor: pointer;
+
+  &:hover {
+    color: #eee
+    
+    img {
+      z-index: -1;
+      opacity: .5;
+    }
+  }
+
+  img {
+    max-width: 100%;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  &.user-avatar-upload {
+    border: 1px dashed #fff;
+    color: #eee
+  }
+}
+
+
+#image-upload {
+  display: none;
+  position: fixed;
+  bottom: 5.5em;
+  left: 1em;
+  right: 1em;
+  width: auto
+}
+
+#start-video {
+  left: 8em;
+}
+
+.video-stuff button {
+position: fixed;
+bottom: 8em;
+left: 1em;
+}
