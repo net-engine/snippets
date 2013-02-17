@@ -69,10 +69,11 @@ input {
 .app-header {
   height: 2em;
   line-height: 2em;
-  position: fixed;
+  position: absolute;
   top: 1em;
   left: 1em;
   right: 1em;
+  z-index: 10;
 }
 
 .app-title {
@@ -94,6 +95,7 @@ input {
   right: 1em;
   height: 2em;
   line-height: 2em;
+  z-index: 100;
 }
 
 .accounts-dialog {
@@ -108,7 +110,7 @@ input {
 }
 
 .container {
-  position: fixed;
+  position: absolute;
   padding: .5em 1em;
   top: 4em;
   left: 0;
@@ -120,11 +122,42 @@ input {
 
 .code {
   position: relative;
-  margin: 0 0 1em;
+  margin: 2em 0 0;
+
+  &:first-child { margin-top: 1em; }
+
+  .author {
+    position: absolute;
+    top: -2em;
+    left: 0;
+    font-size: .75em;
+  }
+
+  .lang {
+    position: absolute;
+    bottom: 1.55em;
+    right: .25em;
+    border-radius: 2px;
+    font-size: .75em;
+    color: $background-color;
+    line-height: 1em;
+    padding: 0 .5em;
+    background: rgba(white, .25);
+    text-transform: uppercase;
+
+  }
+
+  time {
+    position: absolute;
+    bottom: 0;
+    right: .25em;
+    font-size: .75em;
+    color: hsl(190,60%,15%);
+  }
 }
 
 .app-footer {
-  position: fixed;
+  position: absolute;
   bottom: 1em;
   left: 1em;
   right: 1em;
@@ -177,7 +210,7 @@ input {
 .delete, .login-close-text {
   position: absolute;
   top: -.35em;
-  left: -.5em;
+  right: -.5em;
   text-indent: -9999px;
   overflow: hidden;
   width: 1em;
@@ -185,6 +218,11 @@ input {
   line-height: 1em;
   background: #103d38;
   border-radius: 50%;
+
+  &:hover {
+    cursor: pointer;
+    background: darken(#103d38, 10%);
+  }
 
   &:before {
     content: '\D7';
@@ -214,6 +252,11 @@ button {
   -webkit-appearance: none;
   font: normal 16px/1em monospace;
   text-transform: lowercase;
+  
+  &:hover {
+    cursor: pointer;
+    background: rgba(white,.85);
+  }
 }
 
 
@@ -225,42 +268,6 @@ pre.prettyprint {
   box-shadow: inset 0 1px 1px rgba(black, .85);
   border-radius: 3px;
 }
-
-
-video {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  width: 500px;
-  height: 300px;
-  margin: -150px -250px;
-  z-index: 100;
-  background: rgba(black, .5);
-}
-
-.lang {
-  position: absolute;
-  top: .25em;
-  right: .25em;
-  border-radius: 2px;
-  font-size: .75em;
-  color: $background-color;
-  line-height: 1em;
-  padding: 0 .5em;
-  background: rgba(white, .25);
-  text-transform: uppercase;
-}
-
-time {
-  position: absolute;
-  bottom: 0;
-  right: .25em;
-  font-size: .75em;
-  color: hsl(190,60%,15%);
-}
-
-
-
 
 
 .public {
@@ -361,6 +368,7 @@ time {
 
   img {
     max-width: 100%;
+    height: 100%
     border-radius: 50%;
     position: absolute;
     top: 0;
@@ -374,21 +382,64 @@ time {
 }
 
 
-#image-upload {
+.video-box {
   display: none;
   position: fixed;
-  bottom: 5.5em;
-  left: 1em;
-  right: 1em;
-  width: auto
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  height: 400px;
+  margin: -200px;
+  z-index: 100;
+  border-radius: 2px
+  background: rgba(black, .5);
+
+  button {
+    position: absolute;
+    bottom: 2em;
+    left: 50%;
+    width: 8em;
+    white-space: nowrap;
+    margin-left: -4em;
+  }
+
 }
 
-#start-video {
-  left: 8em;
+.video-container {
+  position: absolute;
+  top: 1em; bottom: 1em;
+  left: 1em; right: 1em;
+  overflow: hidden;
+  
+   video {
+    width: 600px;
+    height: 400px;
+    margin-left: -100px;
+  }
 }
 
-.video-stuff button {
-position: fixed;
-bottom: 8em;
-left: 1em;
+
+
+
+
+@media screen and (max-width: 500px) {
+  
+  #login-name-link {
+    text-indent: -9999px;
+    display: block;
+    position: relative;
+
+    &:before {
+      text-indent: 0;
+      content: '\2015  \2015  \2015';
+      position: absolute;
+      top: 0.1em;
+      right: 0.15em;
+      font-size: 2em;
+      width: 20px;
+      height: 20px;
+      line-height: 6px;
+    }
+  }
 }
+

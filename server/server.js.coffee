@@ -5,8 +5,8 @@ if (Meteor.isServer)
     handle  = query.observe(
       added: (code) ->
         now = new Date()
-        time = now.getHours() + ':' + pad(now.getMinutes())
-        Codes.update(code._id, time: time, message: code.message)
+        time = pad(now.getHours(), 2) + ':' + pad(now.getMinutes(), 2)
+        Codes.update(code._id, time: time, message: code.message, author: code.author, lang: code.lang)
     )
 
     if (Codes.find().count() == 0)

@@ -1,0 +1,24 @@
+<template name="avatar">
+  
+  <div id='user-avatar' class="user-avatar">
+    {{#if avatar}}
+      <img src="{{avatar.image}}">
+    {{else}}
+      <img src="/default.png">
+    {{/if}}
+  </div>
+  
+  <!-- <input id='image-upload' type='file' /> -->
+
+  <div id='video-box' class='video-box'>
+    <div class='video-container'>
+      <video id="video"></video>
+    </div>
+    <button id="startbutton" disabled='disabled'>Take photo</button>
+    
+    <canvas id="canvas" style='display: none;'></canvas>
+    <img src="http://placekitten.com/g/320/261" id="photo"  style='display: none;' alt="photo">
+    <div class='delete'>Close</div>
+  </div>
+
+</template>

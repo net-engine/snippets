@@ -10,6 +10,7 @@
     <header class='app-header'>
       <h1 class='app-title'><a href="/" title='Snippets'>snippets</a></h1>
       {{#if currentUser}} {{> avatar}} {{/if}}
+
     </header>
 
     {{loginButtons align='right'}}
@@ -29,15 +30,3 @@
   </wrapper>
   
 </body>
-
-
-<template name="avatar">
-  
-  <div id='user-avatar' class="user-avatar user-avatar-upload">your face here</div>
-  
-  <input id='image-upload' type='file' />
-</template>
-
-
-
-
